@@ -9,6 +9,7 @@ tags: go go-kit 框架 微服务 中间件
 ---
 
 > 库存 go-kit中间件学习
+
 ### middleware与serverOption
 #### 1. 
 ```	
@@ -31,12 +32,13 @@ serverOption 更靠近框架层
 ### 限流器
 设置一段时间内最多访问次数
 > package ratelimit
+
 ```go
 endpoint = MakeEndpoint(svc)
  // 超限报错
 sumEndpoint = ratelimit.NewErroringLimiter(rate.NewLimiter(rate.Every(time.Second), 1))(endpoint)
 
- // 超限延迟
+ // 超限延迟	
 sumEndpoint = ratelimit.NewDelayingLimiter(rate.NewLimiter(rate.Every(time.Second), 1))(endpoint)
 ```
 
@@ -44,6 +46,7 @@ sumEndpoint = ratelimit.NewDelayingLimiter(rate.NewLimiter(rate.Every(time.Secon
 当服务panic次数过多时，断路器会阻止服务调用，直接返回错误
 #### gobreaker
 > package circuitbreaker
+
 ```go
 endpoint = MakeSumEndpoint(svc)
 circuitbreaker.Gobreaker(gobreaker.NewCircuitBreaker(gobreaker.Settings{
@@ -73,6 +76,7 @@ type Settings struct {
 
 #### hystrix
 > package circuitbreaker
+
 ```go
     endpoint = MakeEndpoint(svc)
 	hystrix.ConfigureCommand("my-endpoint",   
@@ -102,6 +106,7 @@ type CommandConfig struct {
 
 #### handybreaker
 > package circuitbreaker
+
 ```go
     endpoint = MakeEndpoint(svc)
 	breaker := breaker.NewBreaker(0.05) // 错误率阈值
