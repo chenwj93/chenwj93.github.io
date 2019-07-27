@@ -17,7 +17,7 @@ baseurl: ''
 # Navigation links
 nav:
   home: '/'
-  categorys: '/categorys.html'
+  categories: '/categories.html'
   tags: '/tags.html'
   about: '/about.html'
 
