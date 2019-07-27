@@ -327,20 +327,20 @@ a {
   height: 22px;
   padding: 0 8px;
   font-size: 14px;
-  color: #A6ABB2;
+  color: rgb(157, 162, 168);
   font-family: -apple-system, Verdana, "PingFang SC", "Helvetica Neue", "Arial", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
   line-height: 22px;
   box-sizing: border-box;
   box-shadow: 0 0 .6px #D5DAE1;
-  border-radius: 2px;
-  background-color: #FAFAFA;
+  border-radius: 20px;
+  background-color: #f1efef;
   cursor: pointer;
   margin-right: 2px;
   transition: .2s; }
   .article-item .post-meta .post-tag:last-child, .tags-card .tag:last-child, .tags-content .tag:last-child {
     margin-right: 0; }
   .article-item .post-meta .post-tag:hover, .tags-card .tag:hover, .tags-content .tag:hover {
-    color: #83888F; }
+    color: rgb(112, 116, 122); }
 
 .g-sidebar-wrapper {
   float: right;
