@@ -27,7 +27,12 @@ description:
                 {% endif %}
                 <section class="post-preview">
                     <a class="post-link" href="{{ post.url | relative_url }}" title="{{ post.title }}"></a>
-                    <h2 class="post-title">[{{ post.categories}}]{{ post.title }}</h2>
+                    <h2 class="post-title">
+                        {% if site.recommend-category and post.categories.size > 0 %}
+                            [{{ post.categories[0]}}]
+                        {% endif %}
+                        {{ post.title }}
+                    </h2>
                     {% if post.subtitle %}
                     <h3 class="post-subtitle">{{ post.subtitle }}</h3>
                     {% endif %}

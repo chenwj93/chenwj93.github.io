@@ -2,6 +2,6 @@
 
 <center>
 
-![image]/img/profile.png
+<img src="/img/profile.png">
 
-</center>
+</center>   
