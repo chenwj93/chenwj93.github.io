@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Reflect
+title: Go Reflect
 subtitle: Go语言中反射包的实现原理
 date: 2019-07-29
 categories: go
 cover: 
-tags: all go 原理
+tags: all go 反射
 ---
 
 > **[转载](https://studygolang.com/articles/2157)**
