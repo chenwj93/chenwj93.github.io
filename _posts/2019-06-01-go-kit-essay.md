@@ -27,7 +27,7 @@ middleware 更靠近业务层
 serverOption 更靠近框架层
 ```
 
-![image](https://wx3.sinaimg.cn/mw1024/007MotX5ly1g2v5f365omj30ho06w747.jpg)
+<img src="/img/gokitessay1.jpg">
 
 ### 限流器
 设置一段时间内最多访问次数
