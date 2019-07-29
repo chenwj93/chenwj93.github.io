@@ -29,7 +29,9 @@ tags: all docker mysql
 ## 创建定时任务
 
 > 假定 设置/home/mysql/timingBackup文件夹为备份文件夹，并挂载到容器的相同文件夹下
+
 ---
+
 #### 进入容器
 > docker exec -it mysql /bin/bash
 
@@ -40,7 +42,7 @@ tags: all docker mysql
 > vim mysqldump.sh
 
 #### 编辑脚本
-```
+```shell
 day=`date +%Y%m%d`
 backpath=/home/mysql/timingBackup/$day
 user=username
@@ -59,7 +61,7 @@ mysqldump -h '127.0.0.1' -u$user -p$passwd --databases dbname1 dbname2 |gzip > $
 > vim 创建rmbackup.sh
 
 #### 编辑脚本
-```
+```shell
 # 删除三天前的日志
 day=`date +%Y%m%d -d  -3days`
 backpath=/home/mysql/timingBackup/$day
