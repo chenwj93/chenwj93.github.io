@@ -2,7 +2,7 @@
 layout: post
 title: Decorator
 subtitle: 装饰模式
-date: 2019-07-29
+date: 2019-07-22
 categories: go
 cover: 
 tags: all go 设计模式

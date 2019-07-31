@@ -2,7 +2,7 @@
 layout: post
 title: Java Generic
 subtitle: java 泛型
-date: 2019-07-29
+date: 2019-07-16
 categories: java
 cover: 
 tags: all java 泛型

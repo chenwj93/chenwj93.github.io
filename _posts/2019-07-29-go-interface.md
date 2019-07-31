@@ -1,8 +1,8 @@
 ---
 layout: post
-title: go Interface
+title: Go Interface
 subtitle: 接口
-date: 2019-07-25
+date: 2019-07-29
 categories: go
 cover: 
 tags: all go 接口

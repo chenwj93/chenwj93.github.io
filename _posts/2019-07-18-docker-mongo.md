@@ -2,7 +2,7 @@
 layout: post
 title: Docker deploy mongo
 subtitle: docker 部署mongodb
-date: 2019-07-29
+date: 2019-07-25
 categories: docker
 cover: 
 tags: all docker mongo mongodb
