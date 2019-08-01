@@ -189,7 +189,7 @@ func TestPubSub(t *testing.T) {
 
 #### 控制并发数
 通过带缓存空间的channel进行并发控制
-```
+```go
 var limit = make(chan int, 3)
 
 func main() {
@@ -206,7 +206,7 @@ func main() {
 
 #### 赢者为王
 有时候我们需要同时进行多个任务，但又只需要最快返回的一个结果
-```
+```go
 func main() {
 	ch := make(chan string, 32)
 
