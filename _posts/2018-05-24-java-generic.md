@@ -5,7 +5,7 @@ subtitle: java 泛型
 date: 2019-07-16
 categories: java
 cover: 
-tags: all java 泛型
+tags: all 泛型
 ---
 
 > 库存 java-泛型

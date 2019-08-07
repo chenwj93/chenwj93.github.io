@@ -5,7 +5,7 @@ subtitle: 接口
 date: 2019-07-29
 categories: go
 cover: 
-tags: all go 接口
+tags: all 接口
 ---
 
 > 读《Go语言高级编程》笔记

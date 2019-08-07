@@ -5,7 +5,7 @@ subtitle: docker 部署mongodb
 date: 2019-07-25
 categories: docker
 cover: 
-tags: all docker mongo mongodb
+tags: all mongo mongodb
 ---
 
 > 库存 docker-mongo

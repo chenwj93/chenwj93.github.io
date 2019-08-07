@@ -5,7 +5,7 @@ subtitle: go-kit 随记
 date: 2019-07-23
 categories: go
 cover: 
-tags: all go go-kit 框架 微服务 中间件
+tags: all go-kit 框架 微服务 中间件
 ---
 
 > 库存 go-kit中间件学习

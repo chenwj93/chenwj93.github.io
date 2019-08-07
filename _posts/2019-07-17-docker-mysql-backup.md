@@ -5,7 +5,7 @@ subtitle: docker mysql 定时备份
 date: 2019-07-24
 categories: docker
 cover: 
-tags: all docker mysql
+tags: all mysql
 ---
 
 > 库存 docker-mysql
@@ -18,8 +18,9 @@ tags: all docker mysql
 >docker tag registry.cn-hangzhou.aliyuncs.com/acs-sample/mysql:5.7 mysql:5.7
 
 #### 启动服务
->docker run --name="mysql5.7" -v /mysql/data:/var/lib/mysql -v /mysql/conf.d:/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=password --restart=always -d -i -p 3316:3306 mysql:5.7
-
+```
+docker run --name="mysql5.7" -v /mysql/data:/var/lib/mysql -v /mysql/conf.d:/etc/mysql/conf.d -e MYSQL_ROOT_PASSWORD=password --restart=always -d -i -p 3316:3306 mysql:5.7
+```
 #### 进入容器
 >docker exec -it mysql5.7 /bin/bash
 

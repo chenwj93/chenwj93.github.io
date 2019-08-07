@@ -5,7 +5,7 @@ subtitle: java 多线程
 date: 2019-07-15
 categories: java
 cover: 
-tags: all java 多线程
+tags: all 多线程
 ---
 
 > 库存 java-多线程

@@ -5,7 +5,7 @@ subtitle: 享元模式
 date: 2019-05-22
 categories: go
 cover: 
-tags: all go 设计模式
+tags: all 设计模式
 ---
 
 > 库存 go-设计模式

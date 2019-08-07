@@ -5,7 +5,7 @@ subtitle: go 协程
 date: 2019-07-30
 categories: go
 cover: 
-tags: all go 多线程
+tags: all 多线程 发布订阅
 ---
 
 > 读《Go语言高级编程》笔记
