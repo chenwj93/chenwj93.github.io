@@ -8,7 +8,7 @@ cover:
 tags:
 ---
 
-> 转载 [https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_9030532519087882797%22%7D&n_type=0&p_from=1](https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_9030532519087882797%22%7D&n_type=0&p_from=1)
+> 转载 [现代键盘“反人类”？我们验证了下](https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_9030532519087882797%22%7D&n_type=0&p_from=1)
 
 ## 现代键盘“反人类”？我们验证了下
 > 【文/ 董轶强 陈骢颖 汪诘】
@@ -95,7 +95,7 @@ tags:
 
 > 图：肖尔斯在1872年发表在《科学美国人》上的文章的插图
 
-<img src="/img/4afbfbedab64034f03076f3e0d4139340b551d43.jpeg">
+<img src="/img/622762d0f703918f883a2e4bf1bf66925beec4cb.png">
 
 > 图：QWERTY 键盘的雏形
 
