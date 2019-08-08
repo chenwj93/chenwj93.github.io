@@ -176,6 +176,8 @@ public class GenericTest {
 
 
 ### 泛型通配符
+泛型作为函数参数时
+
 以下这种写法中最大的问题是showKeyValue的参数太固定了，只有Generic<Number>这一种参数可以通过编译
 ```java
 public class genericity {

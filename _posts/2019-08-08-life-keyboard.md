@@ -1,7 +1,7 @@
 ---
 layout: post
 title: QWERTY Keyboard
-subtitle: QWERTY 键盘布局来源
+subtitle: 现代键盘“反人类”？我们验证了下
 date: 2019-08-08
 categories: 小知识
 cover: 
@@ -10,7 +10,6 @@ tags:
 
 > 转载 [现代键盘“反人类”？我们验证了下](https://mbd.baidu.com/newspage/data/landingsuper?context=%7B%22nid%22%3A%22news_9030532519087882797%22%7D&n_type=0&p_from=1)
 
-## 现代键盘“反人类”？我们验证了下
 > 【文/ 董轶强 陈骢颖 汪诘】
 
 ### 键盘布局谜案和常见解释
