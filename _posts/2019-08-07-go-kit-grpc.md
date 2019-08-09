@@ -118,7 +118,9 @@ func Run(cfg Config) {
 
 ## 重要知识点
 ### OPTIONS请求
-相信每一个web开发者都碰到过options跨域问题，第一种方法可以通过nginx进行过滤
+相信每一个web开发者都碰到过options跨域问题
+#### 第一种
+第一种方法可以通过nginx进行过滤
 ```go
 if ($request_method = 'OPTIONS') {
    add_header 'Access-Control-Allow-Origin' '*';
@@ -131,6 +133,8 @@ if ($request_method = 'OPTIONS') {
    return 204;
 }
 ```
+
+#### 第二种
 另一种就是在代码路由中进行处理
 
 然而`proto`+`go-kit`+`truss` 这一套开发工具中，serverOptions 只能做数据处理，无法干涉执行流程。而middleware 则在路由解析流程之后。
@@ -177,4 +181,49 @@ func MakeHTTPHandler(endpoints Endpoints) http.Handler {
 ```go
     sed -i '/m := mux.NewRouter()/a\    http_util.OptionsFileter(m)' svc/transport_http.go 
     sed -i '/^import (/a\    http_util "code.raying.com/cloud/utils/gokit-interceptor/http"' svc/transport_http.go
+```
+
+#### 第三种
+看gorilla/mux 突然发现mux本身也自带一个middleware，那么就有了这第三种解决方法
+
+首先在util包中增加mux_filter.go：
+```go
+func OptionsMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Do stuff here
+		if r.Method == http.MethodOptions {
+			utils.ULog.Println(http.MethodOptions, r.URL)
+			w.WriteHeader(204)
+			w.Header().Set("Access-Control-Allow-Origin", "*")               //允许访问所有域
+			w.Header().Add("Access-Control-Allow-Headers", "*")   //header的类型
+			w.Header().Set("content-type", "application/json;charset=utf-8") //返回数据格式是json
+			return
+		}
+
+		// Call the next handler, which can be another middleware in the chain, or the final handler.
+		next.ServeHTTP(w, r)
+	})
+}
+
+```
+
+然后修改启动方法
+```go
+func Run(cfg Config) {
+	endpoints := NewEndpoints()
+
+	...
+
+	// HTTP transport.
+	go func() {
+		log.Println("transport", "HTTP", "addr", cfg.HTTPAddr)
+		h := svc.MakeHTTPHandler(endpoints)
+		m := mux.NewRouter()
+		m.PathPrefix("/").Handler(h)
+		m.Use(http_util.OptionsMiddleware)
+		errc <- http.ListenAndServe(cfg.HTTPAddr, m)
+	}()
+
+	...
+}
 ```
