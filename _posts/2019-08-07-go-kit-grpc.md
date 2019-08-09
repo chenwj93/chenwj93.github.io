@@ -115,3 +115,66 @@ func Run(cfg Config) {
 	log.Println("exit", <-errc)
 }
 ```
+
+## 重要知识点
+### OPTIONS请求
+相信每一个web开发者都碰到过options跨域问题，第一种方法可以通过nginx进行过滤
+```go
+if ($request_method = 'OPTIONS') {
+   add_header 'Access-Control-Allow-Origin' '*';
+   add_header 'Access-Control-Allow-Credentials' 'true';
+   add_header 'Access-Control-Allow-Methods' 'GET, POST, PATCH, DELETE, PUT, OPTIONS';
+   add_header 'Access-Control-Allow-Headers' 'DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-ContContent-Type,  Access-Control-Expose-Headers, Token, Authorization';
+   add_header 'Access-Control-Max-Age' 1728000;
+   add_header 'Content-Type' 'text/plain charset=UTF-8';
+   add_header 'Content-Length' 0;
+   return 204;
+}
+```
+另一种就是在代码路由中进行处理
+
+然而`proto`+`go-kit`+`truss` 这一套开发工具中，serverOptions 只能做数据处理，无法干涉执行流程。而middleware 则在路由解析流程之后。
+
+那么是否可以定义一条路由规则（OPTIONS的所有URI）呢，我在protobuf中没有找到解决方法。
+
+那只有最后一条路了，修改生成的代码
+
+首先，在util包中增加一个函数
+```go
+func OptionsFileter(m *mux.Router) {
+	m.Methods("OPTIONS").PathPrefix("/").HandlerFunc(
+		func(writer http.ResponseWriter, request *http.Request) {
+			writer.WriteHeader(204)
+			writer.Header().Set("Access-Control-Allow-Origin", "*")               //允许访问所有域
+			writer.Header().Add("Access-Control-Allow-Headers", "*")   //header的类型
+			writer.Header().Set("content-type", "application/json;charset=utf-8") //返回数据格式是json
+		})
+}
+```
+然后修改`transport_http.go`
+```go
+func MakeHTTPHandler(endpoints Endpoints) http.Handler {
+	serverOptions := []httptransport.ServerOption{
+		httptransport.ServerBefore(headersToContext),
+		httptransport.ServerErrorEncoder(errcode.HttpEncoder),
+		httptransport.ServerAfter(httptransport.SetContentType(contentType)),
+	}
+	m := mux.NewRouter()
+    http_util.OptionsFileter(m) // 新增这一个路由
+
+	m.Methods("GET").Path("/health").Handler(httptransport.NewServer(
+		endpoints.HealthCheckEndpoint,
+		DecodeHTTPHealthCheckZeroRequest,
+		EncodeHTTPGenericResponse,
+		serverOptions...,
+	))
+
+	...
+}
+```
+
+由于我们是使用shell脚本调truss生成代码，同时会适当做出一些代码修改，所以可以将这个修改操作加入到脚本中
+```go
+    sed -i '/m := mux.NewRouter()/a\    http_util.OptionsFileter(m)' svc/transport_http.go 
+    sed -i '/^import (/a\    http_util "code.raying.com/cloud/utils/gokit-interceptor/http"' svc/transport_http.go
+```
