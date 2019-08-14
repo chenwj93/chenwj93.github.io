@@ -12,9 +12,10 @@ tags: all template
 
 # text template
 ##### 操作
-模板以`\{\{`和`\}\}`分隔文本与操作，以`.`取当前对象，例如
-`hello \{\{.Lan\}\}`,解析会将Lan对应的值渲染到模板（假如为"go"），则输出`hello go`
-
+{% raw %}
+模板以`{{`和`}}`分隔文本与操作，以`.`取当前对象，例如
+`hello {{.Lan}}`,解析会将Lan对应的值渲染到模板（假如为"go"），则输出`hello go`
+{% endraw %}
 
 模板支持 if、else、range 等命令
 ##### 变量
@@ -26,7 +27,9 @@ $value 为变量名，1为值
 ##### 函数
 模板本身可编程性差，但是可以调用go中已定义函数，支持多个输入参数，1个或2个（一个结果和一个错误信息）输出参数
 
-`\{\{Func param1 param2\}\}`
+{% raw %}
+`{{Func param1 param2}}`
+{% endraw %}
 
 模板默认实现了以下函数
 ```go
@@ -58,15 +61,18 @@ var builtins = FuncMap{
 管道与linux命令类似，可以链接多个命令，并将前一个命令的结果作为后一个命令的最后一个参数
 
 ##### 模板嵌套
+{% raw %}
 ```go
 `\{\{define "T1"\}\}ONE\{\{end\}\}
 \{\{define "T2"\}\}TWO\{\{end\}\}
 \{\{define "T3"\}\}\{\{template "T1"\}\} \{\{template "T2"\}\}\{\{end\}\}
 \{\{template "T3"\}\}`
 ```
+{% endraw %}
 以上定义了T1、T2、T3三个模板，T3嵌套了1、2，并在最后调用了T3
 
 ##### 示例
+{% raw %}
 ```go
 var tempvar = `
 \{\{range .\}\}
@@ -79,6 +85,7 @@ type \{\{$table.Name "enc" | Upper \}\} struct {
 \{\{end\}\}
 
 `
+{% endraw %}
 
 type Table struct {
 	name string
