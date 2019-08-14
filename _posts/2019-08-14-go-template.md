@@ -94,31 +94,33 @@ func TestTemp(t1 *testing.T) {
 		panic(err)
 	}
 	var res strings.Builder
-	param := []Table{{
-		name: "Test",
-		Col: []map[string]interface{}{
-			{
-				"colName": "id",
-				"tag":     "`column(id)`",
+	param := []Table{
+		{
+			name: "Test",
+			Col: []map[string]interface{}{
+				{
+					"colName": "id",
+					"tag":     "`column(id)`",
+				},
+				{
+					"colName": "name",
+					"tag":     "`column(name)`",
+				},
 			},
-			{
-				"colName": "name",
-				"tag":     "`column(name)`",
+		},{
+			name: "Test2",
+			Col: []map[string]interface{}{
+				{
+					"colName": "id2",
+					"tag":     "`column(id_2)`",
+				},
+				{
+					"colName": "name_2",
+					"tag":     "`column(name_2)`",
+				},
 			},
-		},
-	},{
-		name: "Test2",
-		Col: []map[string]interface{}{
-			{
-				"colName": "id2",
-				"tag":     "`column(id_2)`",
-			},
-			{
-				"colName": "name_2",
-				"tag":     "`column(name_2)`",
-			},
-		},
-	}}
+		}
+	}
 	err = temp.Execute(&res, &param)
 	//err = temp.ExecuteTemplate(&res, "T1", param) // 按照模板名执行
 	if err != nil {
