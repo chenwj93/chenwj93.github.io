@@ -12,21 +12,21 @@ tags: all template
 
 # text template
 ##### 操作
-{% raw %}
 模板以`\{\{`和`\}\}`分隔文本与操作，以`.`取当前对象，例如
 `hello \{\{.Lan\}\}`,解析会将Lan对应的值渲染到模板（假如为"go"），则输出`hello go`
-{% endraw %}
+
 
 模板支持 if、else、range 等命令
 ##### 变量
+{% raw %}
 `\{\{$value := 1\}\}`
-
+{% endraw %}
 $value 为变量名，1为值
 
 ##### 函数
 模板本身可编程性差，但是可以调用go中已定义函数，支持多个输入参数，1个或2个（一个结果和一个错误信息）输出参数
 
-`\{\{Func param1 param2\}\}`
+`\{{Func param1 param2\}}`
 
 模板默认实现了以下函数
 ```go
