@@ -63,10 +63,10 @@ var builtins = FuncMap{
 ##### 模板嵌套
 {% raw %}
 ```go
-`\{\{define "T1"\}\}ONE\{\{end\}\}
-\{\{define "T2"\}\}TWO\{\{end\}\}
-\{\{define "T3"\}\}\{\{template "T1"\}\} \{\{template "T2"\}\}\{\{end\}\}
-\{\{template "T3"\}\}`
+`{{define "T1"}}ONE{{end}}
+{{define "T2"}}TWO{{end}}
+{{define "T3"}}{{template "T1"}} {{template "T2"}}{{end}}
+{{template "T3"}}`
 ```
 {% endraw %}
 以上定义了T1、T2、T3三个模板，T3嵌套了1、2，并在最后调用了T3
@@ -75,14 +75,14 @@ var builtins = FuncMap{
 {% raw %}
 ```go
 var tempvar = `
-\{\{range .\}\}
-\{\{$table := .\}\}
-type \{\{$table.Name "enc" | Upper \}\} struct {
-	\{\{range $index, $element := .Col\}\}
-	\{\{$col := $element\}\} \{\{$index\}\}  \{\{Mapper $col.colName\}\} \{\{Tag $col\}\}
-	\{\{end\}\}
+{{range .}}
+{{$table := .}}
+type {{$table.Name "enc" | Upper }} struct {
+	{{range $index, $element := .Col}}
+	{{$col := $element}} {{$index}}  {{Mapper $col.colName}} {{Tag $col}}
+	{{end}}
 }
-\{\{end\}\}
+{{end}}
 
 `
 {% endraw %}
