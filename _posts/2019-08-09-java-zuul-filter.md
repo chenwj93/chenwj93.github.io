@@ -150,6 +150,7 @@ func (u *LoginInfoMap) Put(token string, val *LoginInfo) {
 - 登录用户信息存储在两个全局变量中（uim userInfoMap/  lim loginInfoMap）
 - 通过**登录token**可以从lim中找到**过期时间**以及**用户信息**
 - 通过**用户信息(用户名、客户id)摘要**可以从uim中找到**用户信息**以及**最近登录token**
+
 #### 登录操作
 - 当用户名不存在已登录情况时，校验密码，生成token，存储uim，lim
 - 当用户名已登录时，判断该账号是否允许多人登录
@@ -157,7 +158,7 @@ func (u *LoginInfoMap) Put(token string, val *LoginInfo) {
   - 不允许时，从lim删除之前登录信息，其他操作同允许情况
 
 #### 权限信息存储结构
-```
+```go
 URLmap:{
     "url1":1
     "url2":2
