@@ -16,9 +16,14 @@ gitbook就不介绍了，这几天看GitHub上的一本开源书，在线看有�
 
 #### 创建文件夹
 ```
-mkdir -p /Data/bookName/gitbook
+mkdir -p /Data/bookName/html
 cd /Data/bookName
-mkdir html
+```
+
+#### 下载代码
+```
+git pull git-url-bookname
+mv bookname gitbook
 ```
 #### pull镜像
 > docker pull fellah/gitbook
