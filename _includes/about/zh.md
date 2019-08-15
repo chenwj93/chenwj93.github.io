@@ -2,6 +2,6 @@
 
 <center>
 
-<img src="/img/profile.png">
+<img src="/img/pay.png">
 
 </center>   
