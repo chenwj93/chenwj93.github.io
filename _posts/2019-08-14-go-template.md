@@ -11,20 +11,20 @@ tags: all template
 > 基础
 
 # text template
-##### 操作
+#### 操作
 {% raw %}
 模板以`{{`和`}}`分隔文本与操作，以`.`取当前对象，例如
 `hello {{.Lan}}`,解析会将Lan对应的值渲染到模板（假如为"go"），则输出`hello go`
 {% endraw %}
 
 模板支持 if、else、range 等命令
-##### 变量
+#### 变量
 {% raw %}
 `{{$value := 1}}`
 {% endraw %}
 $value 为变量名，1为值
 
-##### 函数
+#### 函数
 模板本身可编程性差，但是可以调用go中已定义函数，支持多个输入参数，1个或2个（一个结果和一个错误信息）输出参数
 
 {% raw %}
@@ -57,12 +57,12 @@ var builtins = FuncMap{
 }
 ```
 
-##### 管道`|` 
+#### 管道`|` 
 管道与linux命令类似，可以链接多个命令，并将前一个命令的结果作为后一个命令的最后一个参数
 
-##### 模板嵌套
-{% raw %}
+#### 模板嵌套
 ```go
+{% raw %}
 `{{define "T1"}}ONE{{end}}
 {{define "T2"}}TWO{{end}}
 {{define "T3"}}{{template "T1"}} {{template "T2"}}{{end}}
@@ -71,7 +71,7 @@ var builtins = FuncMap{
 {% endraw %}
 以上定义了T1、T2、T3三个模板，T3嵌套了1、2，并在最后调用了T3
 
-##### 示例
+#### 示例
 {% raw %}
 ```go
 var tempvar = `
@@ -132,7 +132,7 @@ func TestTemp(t1 *testing.T) {
 		}
 	}
 	err = temp.Execute(&res, &param)
-	//err = temp.ExecuteTemplate(&res, "T1", param) // 按照模板名执行
+	//err = temp.ExecuteTemplate(&res, "test", param) // 按照模板名执行
 	if err != nil {
 		panic(err)
 	}
