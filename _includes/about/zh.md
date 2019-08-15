@@ -1,7 +1,8 @@
-# <center>关于</center>
+# <center>打赏我</center>
+
 
 <center>
 
-<img src="/img/pay.png">
+<img style="width: 40%;" src="/img/pay.png">
 
 </center>   
