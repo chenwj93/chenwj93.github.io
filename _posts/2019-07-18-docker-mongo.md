@@ -8,8 +8,6 @@ cover:
 tags: all mongo mongodb
 ---
 
-> 库存 docker-mongo
-
 ### 部署
 ##### 拉取mongo镜像
 >docker pull mongo
