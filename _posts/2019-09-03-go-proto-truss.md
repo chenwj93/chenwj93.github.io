@@ -46,7 +46,7 @@ make
 那么我们可以增加goproxy环境变量，参考[https://goproxy.io/](https://goproxy.io/)
 
 增加环境变量
-```
+```go
 # Enable the go modules feature
 export GO111MODULE=on
 # Set the GOPROXY environment variable
