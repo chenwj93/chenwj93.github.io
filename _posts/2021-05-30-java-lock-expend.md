@@ -10,4 +10,4 @@ tags: all java lock synchronized
 
 > 
 
-<img src="/img/templateMethod1.png">
+<img src="/img/java_lock_expend.jpeg">
